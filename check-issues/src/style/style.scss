@@ -1,0 +1,144 @@
+$sub_primary: #FFFFFF;
+$primary: #0075FF;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR&display=swap');
+
+*{
+    box-sizing: border-box;
+    position: relative;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: $sub_primary;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+h1{
+    font-family: 'Bebas Neue', sans-serif;
+    color: $primary;
+}
+
+.background{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    padding: 0 16px;
+    span{
+        display: block;
+        height: 100%;
+        background: linear-gradient(180deg, #BCD7EB 0%, rgba(217, 217, 217, 0.00) 100%, rgba(217, 217, 217, 0.00) 100%);
+        
+        // 40(요소간 거리)/1440 = 2.7..
+        width: calc(100% / 9 - 2.7vw); 
+        margin_right: 2.7vw;
+
+        // 마지막 요소만 마진값 없애기
+        // & 대신 span을 넣으면 span span이 돼버림
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+
+.door-line{
+    height: 100vw;
+    width: 20px;
+    position: fixed;
+    z-index: 100;
+
+    background-color: $sub_primary;
+    margin-left: auto;
+    margin-right: auto;
+    // 피그마에서 확인 가능 - differnce = 반전효과
+    mix-blend-mode: overlay;
+
+    animation-name: rotate;
+    animation-duration: 60s;
+    // 끝나면 안되므로 반복횟수 무한
+    animation-iteration-count: infinite;
+    // 속도변화 없게하기
+    animation-timing-function: linear;
+    // 애니메이션 끝난 뒤 마지막 상태 유지
+    animation-fill-mode: forwards;
+
+
+}
+
+.main{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    h1{
+        position: absolute;
+        // 24/16rem을 넣는 이유: 피그마상으로 16만큼 간격 차이가 나지만,
+        // 실제 웹 간격과 동일하지 않을 수 있으므로 네모박스를 넣어보고, 박스 높이가 24정도이므로
+        // 연산해서 그 값을 넣어준다
+        bottom: 1.5rem;
+        // 기본적으로 들어가있는 마진값을 없애준다
+        margin: 0;
+        // 기본 폰트 사이즈가 더 크므로 폰트사이즈/16 연산값 넣기
+        // 1rem = 16px
+        font-size: 2.8rem;
+        
+    }
+}
+// 반응형 웹으로 만들었을 때, 이미지가 잘리면 안되기 때문에 위치와 너비를 지정해줌
+.logo-holder{
+    display: flex;
+    justify-content: center;
+
+    img{
+        // -2rem을 해주면 양 끝 마진값이 빠짐
+        // 피그마에서 shift + g를 눌러 그리드를 켰을때, 로고가 12개의 네모 안에 7개보다 조금 넘치게 있으므로
+        // 아래와 같이 연산
+        width: calc((100vw - 2rem) / 12 * 7);
+    }
+}
+
+.heart-holder{
+    // 52만큼의 상하 간격이 있으므로, 52 / 16rem값 넣기
+    margin: 3.25rem 0px;
+    
+}
+
+.contents{
+    // 좌우간격 16px
+    padding: 0 1rem;
+    // 80(상하 간격) / 800 (페이지 높이)
+    margin: 10vh auto;
+    max-width: 980px;
+    p{
+        font-size: 1.7rem;
+        // 46.2(lineHeight) / 27.2(fontSize) em
+        line-height: 1.7em;
+        // 기본적으로 들어가는 패딩값 없애주기
+        padding-bottom: 0;
+
+        span{
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2em;
+            color: #434343;
+        }
+        
+    }
+}
+
+@keyframes rotate {
+    // 첫 상태
+    from{
+        transform: rotate(0deg);
+
+    }
+    // 마지막 상태
+    to{
+        transform: rotate(360deg);
+
+    }
+    
+}
