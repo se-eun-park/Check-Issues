@@ -1,7 +1,40 @@
-import React, {useState, useEffect, useRef, useCallback} from "react";
+import React, {useState, useRef, useCallback} from "react";
 import IssueApi from './IssueApi';
 import { Link } from 'react-router-dom';
+import './style/style.css';
 
+const BackgroundSection = () => (
+  <section className="background">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</section>
+);
+
+const MainSection = () => (
+  <section className="main">
+    <div className="logo-holder">
+      <img src="/asset/logo-holder.svg" alt="로고" />
+    </div>
+    <div className="heart-holder">
+      <img src="/asset/heart.svg" alt="" />
+    </div>
+    <h1>UTILIZING GitHub REST API</h1>
+    <div className="door-line"></div>
+  </section>
+);
+
+const ContentsSection = () => (
+  <section className="contents">
+  <p><span>This is a website where you can check Facebook's react repository issues.</span></p>
+  </section>
+);
 
 const IssueListPage = () => {
   const [pageNumber, setpageNumber] = useState(1);
@@ -21,6 +54,9 @@ const IssueListPage = () => {
 
   return (
     <div>
+      <BackgroundSection />
+      <MainSection />
+      <ContentsSection />
     <header>
       <h1>facebook / react</h1>
     </header>

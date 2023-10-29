@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/issuelist" element={<IssueListPage/>} />
+        <Route path="/" element={<IssueListPage/>} />
         <Route path="/issuelist/:issueId" element={<IssueDetailPage />} />
       </Routes>
     </BrowserRouter>
