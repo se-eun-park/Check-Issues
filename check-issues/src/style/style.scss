@@ -1,5 +1,6 @@
 $sub_primary: #FFFFFF;
 $primary: #0075FF;
+$fontblack: #434343;
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR&display=swap');
 
 *{
@@ -14,9 +15,30 @@ body{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-h1{
+a, a:link, a:visited{
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover{
+    color: #0075FF;
+}
+
+
+h1, h2, h3{
     font-family: 'Bebas Neue', sans-serif;
     color: $primary;
+    // 기본적으로 들어가있는 마진값을 없애준다
+    margin: 0;
+    // 기본 폰트 사이즈가 더 크므로 폰트사이즈/16 연산값 넣기
+    // 1rem = 16px
+    font-size: 2.8rem;
+    text-align: center;
+}
+
+.detail-header{
+    margin-top: 2rem;
 }
 
 .background{
@@ -40,6 +62,22 @@ h1{
         &:last-child{
             margin-right: 0;
         }
+    }
+}
+
+.table-container{
+    max-height: 800px;
+}
+
+.background-footer{
+    position: relative;
+    z-index: 1;
+    span{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 15em; 
+        background: linear-gradient(0deg, #BCD7EB 0%, rgba(212, 218, 213, 0.03) 99.99%, rgba(217, 217, 217, 0.00) 100%, rgba(217, 217, 217, 0.00) 100%);
     }
 }
 
@@ -80,14 +118,67 @@ h1{
         // 실제 웹 간격과 동일하지 않을 수 있으므로 네모박스를 넣어보고, 박스 높이가 24정도이므로
         // 연산해서 그 값을 넣어준다
         bottom: 1.5rem;
-        // 기본적으로 들어가있는 마진값을 없애준다
-        margin: 0;
-        // 기본 폰트 사이즈가 더 크므로 폰트사이즈/16 연산값 넣기
-        // 1rem = 16px
-        font-size: 2.8rem;
         
     }
 }
+
+.creator-img{
+    border-radius: 100%;
+    margin: 1rem 0;
+    align-items: center;
+    
+}
+
+.creator-ifm{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2em;
+    color: $fontblack;
+    margin: 0;
+    align-items: center;
+
+}
+
+.creator-issue{
+    position: relative;
+    display: block;
+    margin: 1rem auto;
+    width: 50%;
+    text-align: center;
+    color: $fontblack;
+    overflow-y: scroll;
+    font-size: 1.7rem;
+    line-height: 1.7em;
+}
+
+.detail-background{
+    position: relative;
+    span{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(180deg, #BCD7EB 0%, rgba(217, 217, 217, 0.00) 100%, rgba(217, 217, 217, 0.00) 100%);
+    }
+}
+
+.display-total{
+    max-height: 100vh;
+
+    h1{
+        margin-bottom: 3rem;
+        padding-top: 3rem;
+        text-align: center;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-size: 5rem;
+    }   
+}
+
+.dispay-issue{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: 0 1rem;
+}
+
 // 반응형 웹으로 만들었을 때, 이미지가 잘리면 안되기 때문에 위치와 너비를 지정해줌
 .logo-holder{
     display: flex;
@@ -95,9 +186,9 @@ h1{
 
     img{
         // -2rem을 해주면 양 끝 마진값이 빠짐
-        // 피그마에서 shift + g를 눌러 그리드를 켰을때, 로고가 12개의 네모 안에 7개보다 조금 넘치게 있으므로
+        // 피그마에서 shift + g를 눌러 그리드를 켰을때, 로고가 12개의 네모 안에 6개보다 조금 넘치게 있으므로
         // 아래와 같이 연산
-        width: calc((100vw - 2rem) / 12 * 7);
+        width: calc((100vw - 2rem) / 12 * 6);
     }
 }
 
@@ -105,6 +196,23 @@ h1{
     // 52만큼의 상하 간격이 있으므로, 52 / 16rem값 넣기
     margin: 3.25rem 0px;
     
+}
+
+.detail-contents{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    width: 50%;
+    height: 50vh;
+    align-items: center;
+
+    h2{
+        color: #434343;
+        font-size: 3em;
+        margin: 0;
+    }
+
 }
 
 .contents{
@@ -123,9 +231,57 @@ h1{
         span{
             font-family: 'Bebas Neue', cursive;
             font-size: 2em;
-            color: #434343;
+            color: $fontblack;
+            
         }
         
+    }
+}
+
+table{
+    position: relative;
+    z-index: 2;
+    background-color: #ffffff;
+    border-top: 2px solid $primary;
+    border-bottom: 2px solid $primary;
+    width: 100%;
+    border-collapse: collapse;
+
+    thead{
+        border-bottom: 2px solid $primary;
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+
+        th{
+            color: $fontblack;
+            padding: 0.5em 0;
+        }
+        .thead-empty{
+            width: 1em;
+        }
+    }
+
+    tbody{
+        display: block;
+        max-height: 341px;
+        color: $fontblack;
+        overflow-y: scroll;
+
+        tr{
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            border: 1px solid #f3f2f2;
+            border-left: none;
+            border-right: none;
+        }
+
+        td{
+            text-align: center;
+            padding: 0.2em 0 0.3em;
+        }
+
     }
 }
 
@@ -141,4 +297,50 @@ h1{
 
     }
     
+}
+
+// 모바일 크기에 맞게 반응형 만들기
+// 태블릿용
+@media screen and (max-width: 1024px){
+    .contents p{
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 768px){
+    
+    .door-line{
+        display: none;
+    }
+
+    .logo-holder{
+        width: 100%;
+        padding: 1rem;
+        img{
+            width: 100%;
+        }
+    }
+    .background{
+        padding: 0;
+        span{
+            margin: 0;
+            width: 25%;
+            &:nth-child(n+4){
+                display: none;
+            }
+        }
+    }
+}
+
+// 핸드폰용
+@media screen and (max-width: 450px){
+    .contents p{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .contents p{
+        font-size: 1.1rem;
+    }
 }
