@@ -55,7 +55,7 @@ h1, h2, h3{
         
         // 40(요소간 거리)/1440 = 2.7..
         width: calc(100% / 9 - 2.7vw); 
-        margin_right: 2.7vw;
+        margin-right: 2.7vw;
 
         // 마지막 요소만 마진값 없애기
         // & 대신 span을 넣으면 span span이 돼버림
@@ -145,13 +145,14 @@ h1, h2, h3{
     display: block;
     margin: 1rem;
     max-width: 50%;
-    width: calc((100vw - 2rem) / 12 * 6);
-    height: calc(100vh - 9.5rem);
+    height: calc(100vh - 11rem);
     text-align: center;
     color: $fontblack;
     overflow-y: scroll;
     font-size: 1.7rem;
     line-height: 1.7em;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid #BCD7EB;
 }
 
 .detail-background{

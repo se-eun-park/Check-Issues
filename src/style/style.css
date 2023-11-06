@@ -46,7 +46,7 @@ h1, h2, h3 {
   height: 100%;
   background: linear-gradient(180deg, #BCD7EB 0%, rgba(217, 217, 217, 0) 100%, rgba(217, 217, 217, 0) 100%);
   width: calc(11.1111111111% - 2.7vw);
-  margin_right: 2.7vw;
+  margin-right: 2.7vw;
 }
 .background span:last-child {
   margin-right: 0;
@@ -117,13 +117,14 @@ h1, h2, h3 {
   display: block;
   margin: 1rem;
   max-width: 50%;
-  width: calc((100vw - 2rem) / 12 * 6);
-  height: calc(100vh - 9.5rem);
+  height: calc(100vh - 11rem);
   text-align: center;
   color: #434343;
   overflow-y: scroll;
   font-size: 1.7rem;
   line-height: 1.7em;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid #BCD7EB;
 }
 
 .detail-background {
