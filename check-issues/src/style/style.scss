@@ -126,6 +126,7 @@ h1, h2, h3{
     border-radius: 100%;
     margin: 1rem 0;
     align-items: center;
+    width: calc((50vw - 2rem) / 12 * 6);
     
 }
 
@@ -134,7 +135,9 @@ h1, h2, h3{
     font-size: 2em;
     color: $fontblack;
     margin: 0;
-    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    width: calc((100vw - 2rem) / 12 * 6);
 
 }
 
@@ -142,7 +145,9 @@ h1, h2, h3{
     position: relative;
     display: block;
     margin: 1rem auto;
-    width: 50%;
+    max-width: 50%;
+    width: calc((100vw - 2rem) / 12 * 6);
+    height: calc(100vh - 9.5rem);
     text-align: center;
     color: $fontblack;
     overflow-y: scroll;
@@ -175,7 +180,7 @@ h1, h2, h3{
 .dispay-issue{
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: calc(100vh - 9.5em);
     margin: 0 1rem;
 }
 
@@ -204,13 +209,15 @@ h1, h2, h3{
     flex-direction: column;
     margin: 1rem auto;
     width: 50%;
-    height: 50vh;
+    height: calc(100vh - 9.5em);
     align-items: center;
 
     h2{
         color: #434343;
         font-size: 3em;
         margin: 0;
+        width: calc((100vw - 2rem) / 12 * 6);
+        
     }
 
 }
