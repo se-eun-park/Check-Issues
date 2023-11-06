@@ -37,19 +37,36 @@ const ContentsSection = () => (
 
 const IssueListPage = () => {
   const [pageNumber, setpageNumber] = useState(1);
-  const {issue, error} = IssueApi(pageNumber);
+  const {issue} = IssueApi(pageNumber);
   const adImageURL = "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&w=110&q=100";
   const observer = useRef();
 
-  const lastIssueElementRef = useCallback(node => {
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && issue.length < 120) {
-        setpageNumber(prevpageNumber => prevpageNumber + 1);
-      }
-    });
-    if (node) observer.current.observe(node);
-  }, [pageNumber, observer]);
+  // const lastIssueElementRef = useCallback(node => {
+  //   if (observer.current) observer.current.disconnect();
+  //   observer.current = new IntersectionObserver(entries => {
+  //     if (entries[0].isIntersecting && issue.length < 120) {
+  //       setpageNumber(prevpageNumber => prevpageNumber + 1);
+  //     }
+  //   });
+  //   if (node) observer.current.observe(node);
+  // }, [pageNumber, observer]);
+  // 의존성 배열 어쩌구해서 오류남
+
+  const lastIssueElementRef = useCallback(
+    node => {
+      if (observer.current) observer.current.disconnect();
+  
+      observer.current = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && issue.length < 120) {
+          setpageNumber(prevpageNumber => prevpageNumber + 1);
+        }
+      });
+  
+      if (node) observer.current.observe(node);
+    },
+    // 의존성 배열에 issue.length 추가
+    [issue.length]
+  );
 
   return (
     <div>
