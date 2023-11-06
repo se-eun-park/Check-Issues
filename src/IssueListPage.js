@@ -1,6 +1,5 @@
 import React, {useState, useRef, useCallback} from "react";
 import IssueApi from './IssueApi';
-import { Link } from 'react-router-dom';
 import './style/style.css';
 
 const BackgroundSection = () => (
